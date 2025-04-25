@@ -65,6 +65,7 @@ class Cosine():
         return cont
 
     def preprocess_documents(self, docs):
+        nltk.download('stopwords')
         stop_words = set(stopwords.words("english"))
         lemmatizer = WordNetLemmatizer()
         lemmatized_tokens = []
