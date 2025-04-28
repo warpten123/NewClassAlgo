@@ -64,8 +64,7 @@ class Cosine():
 
         return cont
 
-    def preprocess_documents(self, docs):
-        nltk.download('stopwords')
+    de
         stop_words = set(stopwords.words("english"))
         lemmatizer = WordNetLemmatizer()
         lemmatized_tokens = []
@@ -343,7 +342,7 @@ class Cosine():
             str1 = " "
 
     def extractTraining(self):
-        nltk.download('punkt_tab')
+        
         index = 17
         extractedTraining = []
 

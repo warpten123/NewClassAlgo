@@ -98,4 +98,4 @@ if __name__ == "__main__":
     nltk.download('punkt_tab')
     nltk.download('stopwords')
     before_first_request_func()
-    app.run(debug=True)
+    app.run()
