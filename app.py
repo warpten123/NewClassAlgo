@@ -17,7 +17,7 @@ from knn.cosine import Cosine
 from tfidf.extraction_helper import Helper
 
 app = Flask(__name__)
-
+CORS(app) 
 
 
 
