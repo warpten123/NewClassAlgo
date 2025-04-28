@@ -54,7 +54,7 @@ def upload_file():
     result = {}
 
     filename = file.filename
-    upload_dir = os.path.abspath("/opt/render/project/src/",  'assets', 'upload')
+    upload_dir = os.path.abspath(os.path.join("/opt/render/project/src/", 'assets', 'upload'))
     print("upload_dir",upload_dir)
 
     os.makedirs(upload_dir, exist_ok=True)
