@@ -343,6 +343,7 @@ class Cosine():
             str1 = " "
 
     def extractTraining(self):
+        nltk.download('punkt_tab')
         index = 17
         extractedTraining = []
 
