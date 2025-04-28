@@ -29,6 +29,7 @@ def initializeDataSet():
     tfidf.createTFIDF(" ")
 
 def checkDataSet():
+    print("checkDataSet")
     cont = False
     csv = os.path.abspath("tfidf/Results/TFIDF.csv")  # Get the absolute path of the target file
     directory = glob.glob("tfidf/Results/*.csv")  # Get all CSV files in the directory
@@ -92,6 +93,7 @@ def classify(filename):
 
 @app.before_request
 def before_first_request_func():
+    print("before_first_request_func")
     if (checkDataSet() != True):
         initializeDataSet()
 

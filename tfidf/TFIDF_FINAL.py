@@ -309,6 +309,6 @@ class Processing():
 
 if __name__ == '__main__':
     rawText = ""
-    nltk.download('punkt_tab')
+    print("main on tfif")
     TFIDF = Processing(rawText)
     TFIDF.createTFIDF(rawText)
