@@ -72,6 +72,8 @@ def upload_file():
 
 @app.route('/python/classify/<filename>', methods=['GET'])
 def classify(filename):
+    nltk.download('punkt_tab')
+    nltk.download('stopwords')
     helper = Helper()
     cosine = Cosine()
 
@@ -95,7 +97,5 @@ def before_first_request_func():
 
 
 if __name__ == "__main__":
-    nltk.download('punkt_tab')
-    nltk.download('stopwords')
     before_first_request_func()
     app.run()
