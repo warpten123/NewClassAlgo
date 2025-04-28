@@ -64,7 +64,8 @@ class Cosine():
 
         return cont
 
-    de
+    def preprocess_documents(self, docs):
+       
         stop_words = set(stopwords.words("english"))
         lemmatizer = WordNetLemmatizer()
         lemmatized_tokens = []
