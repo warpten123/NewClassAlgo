@@ -7,6 +7,8 @@ from nltk.tokenize import word_tokenize
 
 
 class Helper:
+    
+
     def getRequiredChapters(self):  # get abstract, intro, res methodology
         return True
 
@@ -27,7 +29,8 @@ class Helper:
         finalText, final_abstract = " ", " "
         limitPages, currentPage = 10, 0
 
-        base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+        # base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+        base_dir = '/opt/render/project/src'
         file_path = os.path.join(base_dir, 'assets', 'upload', filename)
        
         with pdfplumber.open(file_path) as pdf:
@@ -54,7 +57,8 @@ class Helper:
         count = 1
         finalText, final_intro = " ", " "
         limitPages, currentPage = 10, 0
-        base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+         # base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+        base_dir = '/opt/render/project/src'
         file_path = os.path.join(base_dir, 'assets', 'upload', filename)
         with pdfplumber.open(file_path) as pdf:
             for page in pdf.pages:
@@ -79,7 +83,8 @@ class Helper:
         final_method = " "
         limitPages = 10
         currentPage = 0
-        base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+         # base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+        base_dir = '/opt/render/project/src'
         file_path = os.path.join(base_dir, 'assets', 'upload', filename)
         with pdfplumber.open(file_path) as pdf:
             for page in pdf.pages:
