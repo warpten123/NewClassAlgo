@@ -9,6 +9,7 @@ import requests
 import glob
 import nltk
 from flask import Flask
+from flask import abort
 
 
 from tfidf.TFIDF_FINAL import Processing
@@ -55,6 +56,7 @@ def upload_file():
     result = {}
 
     filename = file.filename
+    # upload_dir = os.path.abspath(os.path.join(os.path.dirname(__file__),  'assets', 'upload'))
     upload_dir = os.path.abspath(os.path.join("/opt/render/project/src/", 'assets', 'upload'))
     print("upload_dir",upload_dir)
 
@@ -73,18 +75,22 @@ def upload_file():
 
 @app.route('/python/classify/<filename>', methods=['GET'])
 def classify(filename):
+    # abort(404)  # This will raise a 404 error if the file is not found
     nltk.download('punkt_tab')
     nltk.download('stopwords')
     helper = Helper()
     cosine = Cosine()
 
     appendedData = helper.main_logic(filename)
-   
+    
+    if not appendedData.get('appendedData') or str(appendedData['appendedData']).strip() == "":
+        print("WTF")
+        return jsonify({"message": "Document is empty!"}), 400
     data = cosine.classifyResearch(appendedData['appendedData'], False)
     
     
     sorted_dict = dict(sorted(data.items(), key=lambda item: item[1]))
-
+    print("sorted_dict",sorted_dict)
     # str = ','.join(newList)
     return sorted_dict
 

@@ -15,9 +15,12 @@ class Helper:
     def main_logic(self, filename):
         appendedData = ""
         abstract = self.getFromPDFAbstract(filename)
-        introduction = self.getFromPDFIntro(filename)
-        method = self.getFromPDFMethod(filename)
+        # introduction = self.getFromPDFIntro(filename)
+        introduction = ""
+        # method = self.getFromPDFMethod(filename)
+        method = ""
         appendedData = abstract + introduction + method
+       
        
         return {'abstract': abstract, 'introduction': introduction, 'method': method, 'appendedData': appendedData}
 
@@ -27,7 +30,7 @@ class Helper:
     def getFromPDFAbstract(self, filename):
         count = 1
         finalText, final_abstract = " ", " "
-        limitPages, currentPage = 10, 0
+        limitPages, currentPage = 1, 0
 
         # base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
         base_dir = '/opt/render/project/src'
@@ -38,18 +41,18 @@ class Helper:
                 extractFromPDF = page.extract_text()
                 finalText = finalText + extractFromPDF
 
-                checkAbs = self.getAbstract(finalText, count)
-                if checkAbs:
-                    final_abstract = self.cleanString(finalText)
-                    break
-
+                # checkAbs = self.getAbstract(finalText, count)
+                # if checkAbs:
+                #     final_abstract = self.cleanString(finalText)
+                #     break
+                # final_abstract = self.cleanString(finalText)
                 if currentPage == limitPages:
                     break
-
+                final_abstract = self.cleanString(finalText)
                 count += 1
                 currentPage += 1
-                final_abstract = " "
-                finalText = " "
+                # final_abstract = " "
+                # finalText = " "
 
         return final_abstract
 
@@ -57,7 +60,7 @@ class Helper:
         count = 1
         finalText, final_intro = " ", " "
         limitPages, currentPage = 10, 0
-         # base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+        # base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
         base_dir = '/opt/render/project/src'
         file_path = os.path.join(base_dir, 'assets', 'upload', filename)
         with pdfplumber.open(file_path) as pdf:
@@ -83,7 +86,7 @@ class Helper:
         final_method = " "
         limitPages = 10
         currentPage = 0
-         # base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+        # base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
         base_dir = '/opt/render/project/src'
         file_path = os.path.join(base_dir, 'assets', 'upload', filename)
         with pdfplumber.open(file_path) as pdf:

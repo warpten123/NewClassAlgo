@@ -13,6 +13,7 @@ import pandas as pd
 import pdfplumber
 import matplotlib.pyplot as plt
 import seaborn as sns
+from flask import abort
 
 
 class Cosine():
@@ -100,7 +101,8 @@ class Cosine():
         return term_vec
 
     def getTermFreq(self, unique, length, listOfTokens=list,):
-
+        if length == 0:  # Check if length is 0
+            abort(400, description="Length cannot be zero")
         term_vec = {}
         for str1 in unique:
             term_vec[str1] = 0
