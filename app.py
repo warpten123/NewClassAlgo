@@ -84,7 +84,7 @@ def classify(filename):
     appendedData = helper.main_logic(filename)
     
     if not appendedData.get('appendedData') or str(appendedData['appendedData']).strip() == "":
-        print("WTF")
+      
         return jsonify({"message": "Document is empty!"}), 400
     data = cosine.classifyResearch(appendedData['appendedData'], False)
     
